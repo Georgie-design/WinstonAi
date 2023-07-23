@@ -9,3 +9,6 @@ engine_name='sapi5'
 
 EMAIL = 'jensenj@iwms.wlwv.k12.or.us'
 PASSWORD = 'greeni$GE0RGE'
+
+
+OpenAi_API_key = ""
