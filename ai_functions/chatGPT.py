@@ -1,6 +1,8 @@
 import openai
 import pyttsx3
 import json 
+from variables import OpenAi_API_key as key
+
 
 from variables import engine_name, engine_gender
 from ai_functions.core_ops import speak
@@ -15,7 +17,7 @@ def write_to_file(file_path, content):
         print("An error occurred while writing to the file.")
 
 def chat(chat_query):
-    openai.api_key = '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'
+    openai.api_key = key
     conversation = [
         {'role': 'system', 'content': "You are a helpful British AI Voice Assistant"},
         {'role': 'user', 'content': chat_query}

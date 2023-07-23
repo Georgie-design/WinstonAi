@@ -1,8 +1,8 @@
 from datetime import datetime
-from ai_functions.offline_ops import note, open_calculator, open_autoClicker, open_cmd, open_camera, rickroll, record_audio_to_file
+from ai_functions.offline_ops import note, open_calculator, open_autoClicker, open_cmd, open_camera, rickroll
 from ai_functions.core_ops import speak, take_user_input
 from variables import USERNAME, BOTNAME, engine_rate, engine_name
-from ai_functions.online_ops import find_ip, play_on_youtube, send_email
+from ai_functions.online_ops import find_ip, play_on_youtube
 import pyttsx3
 from ai_functions.core_ops import play_audio
 import sys
@@ -61,34 +61,7 @@ def analyze_query(query):
         play_on_youtube(video_name)
         
 
-    if 'send' in query and 'email' in query:
-        play_audio(r'env\Voice\provide address.mp3')
-        recipetent = input("Recipetent: ")
-        play_audio(r'env\Voice\speak or type.mp3')
-        answer = take_user_input()
-        if 'type' in answer or 'write' in answer:
-            speak("Code later")
-        else:
-            play_audio(r'env\Voice\email subjectt.mp3')
-            subject = take_user_input()
-            play_audio(r'env\Voice\e ail content.mp3')
-            content = take_user_input()
-            play_audio(r'env\Voice\send email.mp3')
-            answer = take_user_input()
-            if 'no' in answer:
-                hour = datetime.now().hour
-                if hour >= 21 and hour < 6:
-                    play_audio(r'env\Voice\good night.mp3')
-                else:
-                    play_audio(r'env\Voice\have a good day master.mp3')
-                
-            else:
-                send_email(recipetent, subject, f"This message was synthezied from audio taken from Jack's Ai Assistant, {BOTNAME}, so excuse grammatical errors." + '\n' + '\n' + '\n' + content)
-    if 'record' in query or 'audio' in query:
-        speak('What do you wish the name of the file to be?')
-        file_name = str(take_user_input() + ".wav")
-        speak('Recording audio...')
-        record_audio_to_file(file_name)
+   
     
 
     if 'chat' in query:
