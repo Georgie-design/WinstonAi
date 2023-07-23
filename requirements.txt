@@ -1,0 +1,10 @@
+speech_recognition
+pyttsx3
+pygame
+pyaudio
+wave
+requests
+wikipedia
+pywhatkit
+yagmail
+openai
