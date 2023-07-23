@@ -1,0 +1,2 @@
+[console_scripts]
+ChatGPT-lite = ChatGPT_lite.__main__:main
