@@ -8,4 +8,4 @@ Clone the Repository and make a Virtual Enviorment. Put all the files into the V
 
 ## Note
 
-This is my first repository and I am a ametur coder, so there might be sloppy unnessasary code that may or may note work.
+This is my first repository, and I am an amateur coder, so there might be sloppy unnecessary code that may or may not work.
