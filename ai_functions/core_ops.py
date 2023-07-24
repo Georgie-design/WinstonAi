@@ -4,8 +4,17 @@ import speech_recognition as sr
 from datetime import datetime
 import pyttsx3
 import pygame
+import threading
 
 engine = pyttsx3.init(engine_name)
+
+
+import os
+import random 
+
+
+
+
 
 
 
@@ -91,4 +100,20 @@ def get_audio():
             print("Exception: " + str(e))
 
     return said.lower()
+
+
+
+
+
+def play_sound(audio_file_path):
+    pygame.init()
+    sound = pygame.mixer.Sound(audio_file_path)
+    sound.play()
+
+    clock = pygame.time.Clock()
+    while pygame.mixer.get_busy():
+        clock.tick(30)
+
+    pygame.quit()
+
 
