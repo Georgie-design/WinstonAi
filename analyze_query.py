@@ -4,8 +4,10 @@ from ai_functions.core_ops import speak, take_user_input
 from variables import USERNAME, BOTNAME, engine_rate, engine_name
 from ai_functions.online_ops import find_ip, play_on_youtube
 import pyttsx3
-from ai_functions.core_ops import play_audio
+from ai_functions.core_ops import play_audio, play_sound
 import sys
+import os
+import random 
 from ai_functions.chatGPT import chat
 engine = pyttsx3.init(engine_name)
 
@@ -73,6 +75,15 @@ def analyze_query(query):
             speak('Activated ChatGPT, What do you want to ask it?')
             answer = take_user_input()
             chat(answer)
+
+
+    if 'surprise' in query:
+        path = r"env\TaylorSongs"
+        files = os.listdir(path)
+        song = random.choice(files)
+        song_path = os.path.join(path, song)
+        play_sound(song_path)
+
 
 
 
