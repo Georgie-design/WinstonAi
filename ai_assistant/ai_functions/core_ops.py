@@ -58,20 +58,17 @@ def take_user_input():
         print(f'{BOTNAME} heard: '+ query)
 
     except Exception:
-        play_audio(r'env\Voice\repeat that.mp3')
+        play_audio(r'ai_assistant\Voice\repeat that.mp3')
         query = 'None'
     return query
 
 def goodbye():
     hour = datetime.now().hour
     if hour >= 21 and hour < 6:
-        play_audio(r'env\Voice\good night.mp3')
+        play_audio(r'ai_assistant\Voice\good night.mp3')
     else:
-        play_audio(r'env\Voice\have a good day master.mp3')
+        play_audio(r'ai_assistant\Voice\have a good day master.mp3')
     
-
-
-
 def get_audio():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -85,10 +82,6 @@ def get_audio():
             print("Exception: " + str(e))
 
     return said.lower()
-
-
-
-
 
 def play_sound(audio_file_path):
     pygame.init()
