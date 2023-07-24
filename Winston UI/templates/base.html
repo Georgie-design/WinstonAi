@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}{% endblock %}
+    <style>
+
+
+        /* Reset default browser styles */
+        body, h1, h2, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+
+            border-bottom: 1px solid #444;
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Container styles */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+            .sidebar {
+            width: 200px;
+            background-color: #444;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+
+            .report-issues {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            padding: 8px 15px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .report-issues:hover {
+            background-color: #555;
+        }
+            
+
+
+
+        .sidebar h2 {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            color: #fff;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px; /* Adjust the font size */
+            padding: 8px 15px; /* Adjust the padding */
+            display: block; /* Make links full-width */
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Main content styles */
+      /* Main content styles */
+      .main-content {
+        margin-left: 200px; /* Match the sidebar width */
+        padding: 10px;
+    }
+
+
+
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    /* Center the table on the page */
+    table {
+        margin: 0 auto;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+
+    <div class="container">
+        <!-- Sidebar (Navigation bar) -->
+        <div class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/songs">Songs</a></li>
+            </ul>
+            <a href="/issues" class="report-issues">Report issues</a>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

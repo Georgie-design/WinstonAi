@@ -8,3 +8,4 @@ wikipedia
 pywhatkit
 yagmail
 openai
+flask
