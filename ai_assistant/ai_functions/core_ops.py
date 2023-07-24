@@ -1,22 +1,10 @@
 from variables import USERNAME, BOTNAME, engine_rate, engine_volume, engine_gender, engine_name
-
 import speech_recognition as sr
 from datetime import datetime
 import pyttsx3
 import pygame
-import threading
 
 engine = pyttsx3.init(engine_name)
-
-
-import os
-import random 
-
-
-
-
-
-
 
 def play_audio(audio_file_path):
     pygame.init()
@@ -28,9 +16,6 @@ def play_audio(audio_file_path):
         clock.tick(30)
 
     pygame.quit()
-
-
-
 
 def configure_engine():
     engine = pyttsx3.init(engine_name)
@@ -44,12 +29,12 @@ def greet_user():
     
     hour = datetime.now().hour
     if (hour >= 6) and (hour < 12):
-        play_audio(r'env\Voice\good_morning_master.mp3')
+        play_audio(r'ai_assistant\Voice\good_morning_master.mp3')
     elif (hour >= 12) and (hour < 16):
-        play_audio(r'env\Voice\good afternoon master.mp3')
+        play_audio(r'ai_assistant\Voice\good afternoon master.mp3')
     elif (hour >= 16) and (hour < 23):
-        play_audio(r'env\Voice\good evening master.mp3')
-    play_audio(r'env\Voice\assistance.mp3')
+        play_audio(r'ai_assistant\Voice\good evening master.mp3')
+    play_audio(r'ai_assistant\Voice\assistance.mp3')
 
 def speak(text):
     """Used to speak whatever text is passed to it"""
