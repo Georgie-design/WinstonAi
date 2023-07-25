@@ -27,7 +27,7 @@ class Todo(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        main.winstonAi()
+        #main.winstonAi()
         return render_template('index.html')
     else:
         return render_template('index.html')
