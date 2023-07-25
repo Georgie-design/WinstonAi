@@ -1,13 +1,29 @@
 import sys
 sys.path.insert(0, r'C:\Users\georg\Downloads\WinstonAi\ai_assistant')
 
-
+import psutil
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
 import main
+
+def is_process_running(process_name):
+    for process in psutil.process_iter(['pid', 'name', 'cmdline']):
+        if process.info['cmdline'] is not None and process_name in process.info['cmdline']:
+            return True
+    return False
+
+def stop_program(process_name):
+    for process in psutil.process_iter(['pid', 'name', 'cmdline']):
+        if process_name in process.info['cmdline']:
+            os.kill(process.info['pid'], 9)
+            print(f"{process_name} is now turned off.")
+            return
+    print(f"{process_name} is not running.")
+
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -27,10 +43,34 @@ class Todo(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        #main.winstonAi()
-        return render_template('index.html')
+        if is_process_running("main.py"):
+            stop_program('main.py')
+        else:
+            main.winstonAi()
+
     else:
         return render_template('index.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/songs', methods=['POST', 'GET'])
 def songs():
