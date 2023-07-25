@@ -1,9 +1,13 @@
+import sys
+sys.path.insert(0, r'C:\Users\georg\Downloads\WinstonAi\ai_assistant')
+
+
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
-from ai_assistant.main import winstonAi
+import main
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -23,7 +27,7 @@ class Todo(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        winstonAi()
+        main.winstonAi()
         return render_template('index.html')
     else:
         return render_template('index.html')

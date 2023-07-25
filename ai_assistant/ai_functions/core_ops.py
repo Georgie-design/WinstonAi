@@ -1,3 +1,9 @@
+
+import sys
+sys.path.insert(0, r'C:\Users\georg\Downloads\WinstonAi')
+
+
+
 from variables import USERNAME, BOTNAME, engine_rate, engine_volume, engine_gender, engine_name
 import speech_recognition as sr
 from datetime import datetime
