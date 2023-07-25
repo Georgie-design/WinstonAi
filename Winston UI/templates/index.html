@@ -33,6 +33,27 @@
         box-shadow: 0 0 5px #007bff; /* Add a shadow when the button is focused */
         }
 
+        .pulsing {
+            border: 10px solid transparent;
+            border-radius: 10px;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                border-color: transparent;
+                box-shadow: 0 0 0 0 rgba(0, 0, 255, 0.6);
+            }
+            50% {
+                border-color: #00f;
+                box-shadow: 0 0 0 30px rgba(0, 0, 255, 0);
+            }
+            100% {
+                border-color: transparent;
+                box-shadow: 0 0 0 0 rgba(0, 0, 255, 0);
+            }
+        }
+
 
 </style>
 
@@ -50,9 +71,33 @@
 
 <form action="/" method="POST">
 
-    <input type="submit" value="Winston" id="winston-button">
+    <input type="submit" value="Winston" id="winston-button" class="pulseButton">
 
 
 </form>
+<div id="message"></div>
+
+
+<script>
+    let isPulsing = false;
+  
+    // Function to toggle the pulsing effect and update the message
+    function togglePulsing() {
+      isPulsing = !isPulsing;
+      const message = document.getElementById('message');
+  
+      if (isPulsing) {
+        document.body.classList.add('pulsing');
+        message.textContent = 'You clicked the button (Pulsing is ON)';
+      } else {
+        document.body.classList.remove('pulsing');
+        message.textContent = '';
+      }
+    }
+  
+    document.getElementById('winston-button').addEventListener('click', togglePulsing);
+  </script>
+
+
 
 {% endblock %}
