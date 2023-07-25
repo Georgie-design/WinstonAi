@@ -1,32 +1,52 @@
 import sys
 sys.path.insert(0, r'C:\Users\georg\Downloads\WinstonAi\ai_assistant')
-
+from psutil import NoSuchProcess
 import psutil
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
-import main
+from main import winstonAi
+import subprocess
 
-def is_process_running(process_name):
+
+
+
+def is_process_running(script_path):
+    process_name = os.path.basename(script_path)
     for process in psutil.process_iter(['pid', 'name', 'cmdline']):
         if process.info['cmdline'] is not None and process_name in process.info['cmdline']:
             return True
     return False
 
-def stop_program(process_name):
-    for process in psutil.process_iter(['pid', 'name', 'cmdline']):
-        if process_name in process.info['cmdline']:
-            os.kill(process.info['pid'], 9)
-            print(f"{process_name} is now turned off.")
-            return
-    print(f"{process_name} is not running.")
+def start_process(script_path):
+    try:
+        subprocess.Popen(["python", script_path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+        print(f"{script_path} is now turned on.")
+    except Exception as e:
+        print(f"Error starting {script_path}: {e}")
+
+def stop_process(script_path):
+    process_name = os.path.basename(script_path)
+    try:
+        for process in psutil.process_iter(['pid', 'name', 'cmdline']):
+            if process.info['cmdline'] is not None and process_name in process.info['cmdline']:
+                subprocess.run(["TASKKILL", "/F", "/PID", str(process.info['pid'])])
+                print(f"{process_name} is now turned off.")
+                return
+        print(f"No running process found for {process_name}.")
+    except Exception as e:
+        print(f"Error stopping {process_name}: {e}")
+
+
 
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///C:\Users\georg\Downloads\WinstonAi\data\databases\database.db'
+
+
 app.root_path = os.path.dirname(os.path.abspath(__file__))  # Specify the app root path
 db = SQLAlchemy(app)
 
@@ -43,15 +63,24 @@ class Todo(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        if is_process_running("main.py"):
-            stop_program('main.py')
-        else:
-            main.winstonAi()
-
+        if request.form.get('start_winston') == 'on':
+            if not is_process_running("main.py"):
+                start_process("main.py")
+            return render_template('winstonOn.html')
+        elif request.form.get('stop_winston') == 'off':
+            if is_process_running("main.py"):
+                stop_process("main.py")
+            return render_template('index.html')
     else:
         return render_template('index.html')
 
 
+@app.route('/winstonOn', methods=['GET'])
+def winston_on():
+    return render_template('winstonOn.html')
+
+
+# Your other routes and code...
 
 
 
@@ -122,7 +151,7 @@ def delete(id):
         db.session.commit()
         return redirect('/songs')
     except:
-        return 'There was a problem deleting you'
+        return 'There was a problem deleting your song'
 
 @app.route('/issues')
 def issues():

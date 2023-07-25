@@ -21,3 +21,6 @@ def winstonAi():
             analyze_query(query)
 
             goodbye()
+
+
+winstonAi()

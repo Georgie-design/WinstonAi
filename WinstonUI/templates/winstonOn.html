@@ -14,7 +14,7 @@
         border: none;
         border-radius: 50%;
         color: #fff;
-        background-color: #000000; /* Replace with your desired button color */
+        background-color: #0056b3; /* Replace with your desired button hover color */
         cursor: pointer;
         text-decoration: none;
         width: 300px;
@@ -24,7 +24,7 @@
 
         /* Style the button on hover */
         #winston-button:hover {
-        background-color: #0056b3; /* Replace with your desired button hover color */
+        background-color: black; /* Replace with your desired button hover color */
         }
 
         /* Style the button on focus (for accessibility) */
@@ -33,7 +33,7 @@
         box-shadow: 0 0 5px #007bff; /* Add a shadow when the button is focused */
         }
 
-        .pulsing {
+        body {
             border: 10px solid transparent;
             border-radius: 10px;
             animation: pulse 1s infinite;
@@ -71,33 +71,9 @@
 
 <form action="/" method="POST">
 
-    <input type="submit" value="Winston" id="winston-button" class="pulseButton">
+    <button type="submit" name="stop_winston" value="off">Stop Winston</button>
 
 
 </form>
-<div id="message"></div>
-
-
-<script>
-    let isPulsing = false;
-  
-    // Function to toggle the pulsing effect and update the message
-    function togglePulsing() {
-      isPulsing = !isPulsing;
-      const message = document.getElementById('message');
-  
-      if (isPulsing) {
-        document.body.classList.add('pulsing');
-        message.textContent = 'You clicked the button (Pulsing is ON)';
-      } else {
-        document.body.classList.remove('pulsing');
-        message.textContent = '';
-      }
-    }
-  
-    document.getElementById('winston-button').addEventListener('click', togglePulsing);
-  </script>
-
-
-
+<p>WinstonAi is ON</p>
 {% endblock %}

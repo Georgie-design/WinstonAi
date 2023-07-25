@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+<title>WinstonAi Homepage</title>
+<style>
+
+    /* Apply general styles to the button */
+    #winston-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        background-color: #000000; /* Replace with your desired button color */
+        cursor: pointer;
+        text-decoration: none;
+        width: 300px;
+        height: 300px;
+        background-image: url("custion_microphone.jpg");
+        }
+
+        /* Style the button on hover */
+        #winston-button:hover {
+        background-color: #0056b3; /* Replace with your desired button hover color */
+        }
+
+        /* Style the button on focus (for accessibility) */
+        #winston-button:focus {
+        outline: none;
+        box-shadow: 0 0 5px #007bff; /* Add a shadow when the button is focused */
+        }
+</style>
+
+{% endblock %}
+
+
+{% block header %}
+
+<h1>WinstonAi Home</h1>
+
+{% endblock %}
+
+
+{% block body %}
+
+<form action="/" method="POST">
+
+    <button type="submit" name="start_winston" value="on">Start Winston</button>
+
+
+</form>
+<div id="message"></div>
+{% endblock %}
