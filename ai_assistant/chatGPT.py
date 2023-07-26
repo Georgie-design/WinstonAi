@@ -5,7 +5,7 @@ from variables import OpenAi_API_key as key
 
 
 from variables import engine_name, engine_gender
-from ai_functions.core_ops import speak
+from .core_ops import speak
 
 def write_to_file(file_path, content):
     try:

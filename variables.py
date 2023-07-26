@@ -1,5 +1,5 @@
 USERNAME='Master'
-BOTNAME='Jarvis'
+BOTNAME='WinstonAi'
 WAKEWORD='winston'
 
 engine_rate=200

@@ -1,14 +1,14 @@
 from datetime import datetime
-from ai_functions.offline_ops import note, open_calculator, open_autoClicker, open_cmd, open_camera, rickroll
-from ai_functions.core_ops import speak, take_user_input
+from .offline_ops import note, open_calculator, open_autoClicker, open_cmd, open_camera, rickroll
+from .core_ops import speak, take_user_input
 from variables import USERNAME, BOTNAME, engine_rate, engine_name
-from ai_functions.online_ops import find_ip, play_on_youtube
+from .online_ops import find_ip, play_on_youtube
 import pyttsx3
-from ai_functions.core_ops import play_audio, play_sound
+from .core_ops import play_audio, play_sound
 import sys
 import os
 import random 
-from ai_functions.chatGPT import chat
+from .chatGPT import chat
 engine = pyttsx3.init(engine_name)
 
 

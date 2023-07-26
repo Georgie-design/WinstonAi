@@ -45,12 +45,13 @@
 
 
 {% block body %}
+<p>Welcome back, {{ name }}!</p>
 
 <form action="/" method="POST">
 
-    <p>Welcome back, {{ name }}!</p>
+    
 
-    <button type="submit" name="start_winston" value="on">Start Winston</button>
+    <button type="submit"  id="winston-button">Start Winston</button>
 
 
 </form>

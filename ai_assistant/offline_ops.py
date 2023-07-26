@@ -1,6 +1,6 @@
 import os
 import subprocess as sp
-from ai_functions.core_ops import speak
+from .core_ops import speak
 import pyaudio
 import wave
 import datetime
