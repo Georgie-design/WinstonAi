@@ -1,4 +1,4 @@
-![WinstonAi](WinstonAi.jpg)
+![WinstonAi](data\Images\WinstonAi.jpg)
 
 WinstonAi is a British Ai Voice Assistant created by I. It uses multiple skills, including taking notes and using the OpenAi API.
 
